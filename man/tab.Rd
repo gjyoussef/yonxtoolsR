@@ -7,7 +7,7 @@
 tab(df, vars)
 }
 \arguments{
-\item{df}{A data frame containing the variables to tabulate.}
+\item{df}{A dataframe or tibble containing the variables to tabulate.}
 
 \item{vars}{A character vector specifying the names of the variables in the data frame.}
 }
@@ -18,8 +18,7 @@ This function prints the frequency tables for the specified variables.
 Uses approach that is similar to Stata's 'tab1'
 }
 \examples{
-df <- mtcars
-tab(df, "mpg") # Use for one variable.
-tab(df, c("mpg", "cyl", "disp")) # Use a character vector for multiple.
+tab(mtcars, "mpg") # Use for one variable.
+tab(mtcars, c("mpg", "cyl", "disp")) # Use a character vector for multiple.
 
 }
