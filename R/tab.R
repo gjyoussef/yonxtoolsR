@@ -8,7 +8,7 @@ tab <- function(df, vars) {
   # Iterate through the specified variables and print frequency tables
   for (i in vars) {
     print(i)
-    print(tabyl(df[[i]]))  # tabyl comes from janitor
+    print(janitor::tabyl(df[[i]]))  # tabyl comes from janitor
     cat("\n\n")
   }
 }
