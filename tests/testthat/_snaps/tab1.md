@@ -1,4 +1,4 @@
-# tab function prints correct tables for mtcars
+# tab1 function prints correct tables for mtcars
 
     [1] "mpg"
      df[[i]] n percent

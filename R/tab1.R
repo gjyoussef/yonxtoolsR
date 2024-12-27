@@ -9,10 +9,10 @@
 #' @export
 #'
 #' @examples
-#' tab(mtcars, "mpg") # Use for one variable.
-#' tab(mtcars, c("mpg", "cyl", "disp")) # Use a character vector for multiple.
+#' tab1(mtcars, "mpg") # Use for one variable.
+#' tab1(mtcars, c("mpg", "cyl", "disp")) # Use a character vector for multiple.
 #'
-tab <- function(df, vars) {
+tab1 <- function(df, vars) {
 
   # Check that df is a data frame
   if (!is.data.frame(df)) {
