@@ -10,10 +10,10 @@ License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-  devtools, 
-  roxygen2,
-  testthat,
-  knitr
+  devtools (>= 2.4.5), 
+  roxygen2 (>= 7.3.2),
+  testthat (>= 3.2.2),
+  knitr (>= 1.49)
 Imports: 
     janitor
 
