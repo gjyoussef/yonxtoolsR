@@ -17,7 +17,7 @@ tab <- function(df, vars) {
 
   # Check that df is a data frame
   if (!is.data.frame(df)) {
-    stop("The 'df' argument must be a data frame.")
+    stop("The 'df' argument must be a dataframe or tibble.")
   }
 
   # Check that vars is a character vector

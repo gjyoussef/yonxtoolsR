@@ -11,8 +11,8 @@ test_that("tab function prints correct tables for mtcars", {
 
 test_that("tab gives error if df is not a dataframe", {
 
-  expect_error(tab(df$mpg, c("mpg","cyl", "disp")), "The 'df' argument must be a data frame.", fixed = TRUE)
-  expect_error(tab(999, c("mpg","cyl", "disp")), "The 'df' argument must be a data frame.", fixed = TRUE)
+  expect_error(tab(df$mpg, c("mpg","cyl", "disp")), "The 'df' argument must be a dataframe or tibble.", fixed = TRUE)
+  expect_error(tab(999, c("mpg","cyl", "disp")), "The 'df' argument must be a dataframe or tibble.", fixed = TRUE)
 
 })
 
