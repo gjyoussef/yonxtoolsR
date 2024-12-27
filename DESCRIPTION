@@ -15,5 +15,5 @@ Suggests:
   testthat (>= 3.2.2),
   knitr (>= 1.49)
 Imports: 
-    janitor
+    janitor (>= 2.2.1)
 
