@@ -1,12 +1,18 @@
-#' Title
+#' Prints frequency tables for specified variables in a data frame.
 #'
-#' @param df
-#' @param vars
+#' Uses approach that is similar to Stata's 'tab1'
 #'
-#' @return
+#' @param df A data frame containing the variables to tabulate.
+#' @param vars A character vector specifying the names of the variables in the data frame.
+#'
+#' @return This function prints the frequency tables for the specified variables.
 #' @export
 #'
 #' @examples
+#' df <- mtcars
+#' tab(df, "mpg") # Use for one variable.
+#' tab(df, c("mpg", "cyl", "disp")) # Use a character vector for multiple.
+#'
 tab <- function(df, vars) {
 
   # Check that df is a data frame
@@ -22,7 +28,8 @@ tab <- function(df, vars) {
   # Check that vars are in df's column names
   missing_vars <- setdiff(vars, colnames(df))
   if (length(missing_vars) > 0) {
-    warning("The following variables are not found in the data frame: ", paste(missing_vars, collapse = ", "))
+    warning("The following variables are not found in the data frame: ",
+            paste(missing_vars, collapse = ", "))
   }
 
   # Iterate through the specified variables and print frequency tables

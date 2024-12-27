@@ -2,13 +2,24 @@
 % Please edit documentation in R/tab.R
 \name{tab}
 \alias{tab}
-\title{Title}
+\title{Prints frequency tables for specified variables in a data frame.}
 \usage{
 tab(df, vars)
 }
 \arguments{
-\item{vars}{}
+\item{df}{A data frame containing the variables to tabulate.}
+
+\item{vars}{A character vector specifying the names of the variables in the data frame.}
+}
+\value{
+This function prints the frequency tables for the specified variables.
 }
 \description{
-Title
+Uses approach that is similar to Stata's 'tab1'
+}
+\examples{
+df <- mtcars
+tab(df, "mpg") # Use for one variable.
+tab(df, c("mpg", "cyl", "disp")) # Use a character vector for multiple.
+
 }
