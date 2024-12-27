@@ -1,3 +1,12 @@
+#' Title
+#'
+#' @param df
+#' @param vars
+#'
+#' @return
+#' @export
+#'
+#' @examples
 tab <- function(df, vars) {
   # # Check that vars are in df's column names
   # missing_vars <- setdiff(vars, colnames(df))
