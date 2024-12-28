@@ -1,14 +1,14 @@
-# library(geepack)
+# library(marginaleffects)
 
 df <- mtcars
 
 res <- lm(mpg ~ vs, data = df)
 summary(res)
-# res$coefficients
-tidy(res)
+# tidy(res)
 
-out <- combineResults_noMod(res)
-out
+combineResults_noMod(res, binary_exposure='vs')
+combineResults_noMod(res, vs)
+combineResults_noMod(res, 'vs')
 
 
 
