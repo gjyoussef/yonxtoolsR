@@ -11,6 +11,7 @@ Imports:
     assertthat (>= 0.2.1),
     dplyr,
     janitor (>= 2.2.1),
+    marginaleffects,
     rlang (>= 1.1.4)
 Suggests: 
     devtools (>= 2.4.5),
