@@ -24,7 +24,10 @@ calculate_props(df, vs_num, decimals=3)
 calculate_props(df, gear, decimals=3)
 
 
-
+df <- head(mtcars, 10)
+calculate_props(df, "vs", decimals=3)
+x <- calculate_props(df, "vs", decimals=3)
+x$pct_ci
 
 dtype(df$vs)
 
