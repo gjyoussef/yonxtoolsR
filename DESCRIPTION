@@ -9,7 +9,8 @@ Description: More about what it does (maybe more than one line) Use four
 License: What license is it under?
 Imports: 
     dplyr (>= 1.1.4),
-    janitor (>= 2.2.1)
+    janitor (>= 2.2.1),
+    rlang (>= 1.1.4)
 Suggests: 
     devtools (>= 2.4.5),
     knitr (>= 1.49),

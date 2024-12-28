@@ -1,24 +1,39 @@
-df <- head(mtcars, 10)
+df <- head(mtcars)
 
 x = colnames(df)
 
 tab1(df, x)
 
-tab1(df, c("cyl", "gear", "carb"))
+tab1(df, c("vs", "am", "carb"))
+
+
+calculate_props(df, "am")
+calculate_props(df, "vs", decimals=3)
+calculate_props(df, vs, decimals=3)
+
+
+df$vs_str = as.character(df$vs)
+df$vs_fac = as.factor(df$vs)
+df$vs_int = as.integer(df$vs)
+df$vs_num = as.numeric(df$vs)
+calculate_props(df, vs_str, decimals=3)
+calculate_props(df, vs_fac, decimals=3)
+calculate_props(df, vs_int, decimals=3)
+calculate_props(df, vs_num, decimals=3)
+
+calculate_props(df, gear, decimals=3)
 
 
 
-calculate_props(df, c("cyl", "gear", "carb"))
+
+dtype(df$vs)
+
+typeof(df$vs)
 
 
+structure(df)
 
-
-
-
-
-
-
-
+class(df$vs)
 
 
 
