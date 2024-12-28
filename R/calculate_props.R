@@ -6,6 +6,9 @@ utils::globalVariables(c("n_endorsed", "N_total", "outcome", "pct_loci", "pct_hi
 #' This function calculates the proportion of a binary variable (coded as 0 and 1) in a dataframe
 #' and optionally computes the confidence intervals for the proportion. The function checks that
 #' the specified variable exists and is binary, and that its values are coded as 0, 1, or NA.
+#' If you have NAs, it will exclude them from the calculations. If you want to include NAs, you should
+#' code these to be 0s. If you have a multinomial variable, you should dummy code each category and then can use this function
+#' to get the proportion for each category.
 #'
 #' @param df A dataframe containing the variable for which proportions and confidence intervals
 #'           are calculated.
