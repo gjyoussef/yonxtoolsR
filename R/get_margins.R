@@ -1,15 +1,29 @@
-#' Title
+# Suppress global variable warnings for known variables
+utils::globalVariables(c(
+  "estimate", "conf.low", "conf.high", "p.value", "subgroup", "subgroup_level",
+  "abs_est", "abs_loci", "abs_hici", "abs_pvalue", "binary_exposure_levels",
+  "binary_exposure_name", "rel_est", "rel_loci", "rel_hici", "rel_pvalue"
+))
+
+#' Combine Results for Marginal Effects and Differences
 #'
-#' @param results
-#' @param binary_exposure
-#' @param decimals
-#' @param decimals_pvalue
-#' @param outcome_is_binary
+#' This function combines marginal means, absolute differences, and relative differences
+#' into a single dataframe, allowing for customized formatting and conversions.
 #'
-#' @return
+#' @param results A model object, typically from `marginaleffects`, containing the results of the model.
+#' @param binary_exposure A string representing the binary exposure variable for the analysis.
+#' @param decimals An integer specifying the number of decimal places to round the results to (default is 2).
+#' @param decimals_pvalue An integer specifying the number of decimal places to round p-values to (default is 4).
+#' @param outcome_is_binary A logical indicating if the outcome variable is binary (default is FALSE).
+#'
+#' @return A dataframe containing the combined results with optional formatting.
 #' @export
 #'
 #' @examples
+#' # Example usage:
+#' df <- mtcars
+#' results <- lm(mpg ~ vs, data = df)
+#' combineResults_noMod(results, binary_exposure = "vs")
 combineResults_noMod <- function(results, binary_exposure, decimals=2, decimals_pvalue=4, outcome_is_binary=FALSE) {
 
   binary_exposure <- rlang::ensym(binary_exposure) #Handle quoted/unquoted input
@@ -42,15 +56,21 @@ combineResults_noMod <- function(results, binary_exposure, decimals=2, decimals_
 }
 
 
-#' Title
+#' Get Marginal Means for Binary Exposure
 #'
-#' @param results
-#' @param binary_exposure
+#' This helper function calculates marginal means for a binary exposure variable using the `marginaleffects` package.
 #'
-#' @return
+#' @param results A model object, typically from `marginaleffects`, containing the results of the model.
+#' @param binary_exposure A string representing the binary exposure variable for the analysis.
+#'
+#' @return A dataframe with marginal means, including the estimated values, confidence intervals, and exposure levels.
 #' @export
+#' @keywords internal
 #'
 #' @examples
+#' df <- mtcars
+#' results <- lm(mpg ~ vs, data = df)
+#' getMarginalMeans_noMod(results, binary_exposure = "vs")
 getMarginalMeans_noMod <- function(results, binary_exposure) {
 
   out <- marginaleffects::predictions(results, by = binary_exposure) #using defaults, which used empirical grid (See https://marginaleffects.com/chapters/predictions.html#empirical-grid)
@@ -83,15 +103,21 @@ getMarginalMeans_noMod <- function(results, binary_exposure) {
 }
 
 
-#' Title
+#' Get Absolute Differences for Binary Exposure
 #'
-#' @param results
-#' @param binary_exposure
+#' This helper function calculates absolute differences for a binary exposure variable using the `marginaleffects` package.
 #'
-#' @return
+#' @param results A model object, typically from `marginaleffects`, containing the results of the model.
+#' @param binary_exposure A string representing the binary exposure variable for the analysis.
+#'
+#' @return A dataframe with absolute differences, including the estimate, confidence intervals, and p-value.
 #' @export
+#' @keywords internal
 #'
 #' @examples
+#' df <- mtcars
+#' results <- lm(mpg ~ vs, data = df)
+#' getDifferencesAbsolute_noMod(results, binary_exposure = "vs")
 getDifferencesAbsolute_noMod <- function(results, binary_exposure) {
 
   out <- marginaleffects::avg_comparisons(results, variables = binary_exposure, comparison = "difference")
@@ -111,15 +137,21 @@ getDifferencesAbsolute_noMod <- function(results, binary_exposure) {
 }
 
 
-#' Title
+#' Get Relative Differences for Binary Exposure
 #'
-#' @param results
-#' @param binary_exposure
+#' This helper function calculates relative differences for a binary exposure variable using the `marginaleffects` package.
 #'
-#' @return
+#' @param results A model object, typically from `marginaleffects`, containing the results of the model.
+#' @param binary_exposure A string representing the binary exposure variable for the analysis.
+#'
+#' @return A dataframe with relative differences, including the estimate, confidence intervals, and p-value.
 #' @export
+#' @keywords internal
 #'
 #' @examples
+#' df <- mtcars
+#' results <- lm(mpg ~ vs, data = df)
+#' getDifferencesRelative_noMod(results, binary_exposure = "vs")
 getDifferencesRelative_noMod <- function(results, binary_exposure) {
 
   out <- marginaleffects::avg_comparisons(results, variables = binary_exposure, comparison = "ratio")
