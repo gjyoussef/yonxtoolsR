@@ -6,12 +6,15 @@ res <- lm(mpg ~ vs, data = df)
 summary(res)
 # tidy(res)
 
-combineResults_noMod(res, binary_exposure='vs')
-combineResults_noMod(res, vs)
-combineResults_noMod(res, 'vs')
+
+x <- getMarginalmeans_noMod(res, binary_exposure='vs')
+class(x)
+# combineResults_noMod(res, binary_exposure='vs')
+# combineResults_noMod(res, vs)
+# combineResults_noMod(res, 'vs')
 
 
-
+getMarginalmeans_noMod
 
 
 # x = colnames(df)
