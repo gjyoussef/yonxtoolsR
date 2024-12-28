@@ -1,4 +1,4 @@
-df <- head(mtcars)
+df <- mtcars
 
 x = colnames(df)
 

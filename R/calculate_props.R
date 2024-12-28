@@ -48,8 +48,7 @@ calculate_props <- function(df, variable, decimals=2) {
       # loci_p = ifelse(N_total > 0, stats::prop.test(n_endorsed, N_total, conf.level = 0.95)$conf.int[1], NA),
       # hici_p = ifelse(N_total > 0, stats::prop.test(n_endorsed, N_total, conf.level = 0.95)$conf.int[2], NA),
       loci_p = ifelse((n_endorsed > 5) & (N_total-n_endorsed > 5), stats::prop.test(n_endorsed, N_total, conf.level = 0.95)$conf.int[1], NA),
-      hici_p = ifelse((n_endorsed > 5) & (N_total-n_endorsed > 5), stats::prop.test(n_endorsed, N_total, conf.level = 0.95)$conf.int[2], NA),
-      .groups = 'drop'
+      hici_p = ifelse((n_endorsed > 5) & (N_total-n_endorsed > 5), stats::prop.test(n_endorsed, N_total, conf.level = 0.95)$conf.int[2], NA)
     ) %>%
     dplyr::mutate(across(c('prop', 'loci_p', 'hici_p'), ~ round(. * 100, decimals))) %>%
     dplyr::mutate(pct_ci = paste0('(', loci_p, ', ', hici_p, ')')) %>%
