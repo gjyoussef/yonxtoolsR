@@ -2,13 +2,29 @@
 % Please edit documentation in R/calculate_props.R
 \name{calculate_props}
 \alias{calculate_props}
-\title{Title}
+\title{Function to calculate proportions and confidence intervals}
 \usage{
-calculate_props(df, variable, decimals = 2)
+calculate_props(df, variable, decimals = 2, format_ci = FALSE)
 }
 \arguments{
-\item{decimals}{}
+\item{df}{A dataframe containing the variable for which proportions and confidence intervals
+are calculated.}
+
+\item{variable}{The name of the variable (column) in the dataframe, passed as a symbol or string.}
+
+\item{decimals}{The number of decimal places to round the proportions and confidence intervals to. Default is 2.}
+
+\item{format_ci}{A logical flag to determine whether to format the confidence intervals into a single
+string (default is FALSE).}
+}
+\value{
+A dataframe with the calculated proportion, and optionally the confidence intervals (as a string).
 }
 \description{
-Title
+This function calculates the proportion of a binary variable (coded as 0 and 1) in a dataframe
+and optionally computes the confidence intervals for the proportion. The function checks that
+the specified variable exists and is binary, and that its values are coded as 0, 1, or NA.
+}
+\examples{
+calculate_props(mtcars, vs, decimals = 3, format_ci = TRUE)
 }

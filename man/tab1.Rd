@@ -20,5 +20,4 @@ Uses approach that is similar to Stata's 'tab1'
 \examples{
 tab1(mtcars, "mpg") # Use for one variable.
 tab1(mtcars, c("mpg", "cyl", "disp")) # Use a character vector for multiple.
-
 }

@@ -9,7 +9,7 @@ Description: More about what it does (maybe more than one line) Use four
 License: What license is it under?
 Imports: 
     assertthat (>= 0.2.1),
-    dplyr (>= 1.1.4),
+    dplyr,
     janitor (>= 2.2.1),
     rlang (>= 1.1.4)
 Suggests: 

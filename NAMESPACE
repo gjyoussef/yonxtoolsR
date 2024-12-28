@@ -2,3 +2,4 @@
 
 export(calculate_props)
 export(tab1)
+importFrom(dplyr,"%>%")

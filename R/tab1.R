@@ -11,37 +11,25 @@
 #' @examples
 #' tab1(mtcars, "mpg") # Use for one variable.
 #' tab1(mtcars, c("mpg", "cyl", "disp")) # Use a character vector for multiple.
-#'
+
 tab1 <- function(df, vars) {
 
+  ####### Validate inputs #######
   assertthat::assert_that(is.data.frame(df),
                           msg = "The 'df' argument must be a dataframe or tibble.")
 
   assertthat::assert_that(is.character(vars),
                           msg = "The 'vars' argument must be a character vector (see docs for examples).")
 
-  # Check that vars are in df's column names
-  # missing_vars <- setdiff(vars, colnames(df))
-  # if (length(missing_vars) > 0) {
-  #   warning("The following variables are not found in the data frame: ",
-  #           paste(missing_vars, collapse = ", "))
-  # }
-
-  # Iterate through the specified variables and print frequency tables
-  # for (i in vars) {
-  #   print(i)
-  #   print(janitor::tabyl(df[[i]]))  # tabyl comes from janitor
-  #   cat("\n\n")
-  # }
-
+  ####### Tabulate variables #######
   for (i in vars) {
     if (i %in% colnames(df)) {
       print(i)
-      print(janitor::tabyl(df[[i]]))  # tabyl comes from janitor
-      cat("\n\n")
-    } else {
-      warning(paste("Variable", i, "was not found in the dataframe, skipped"))
+      print(janitor::tabyl(df[[i]]))
+      message("\n") # Add spacing between tables
+    }
+    else {
+      warning(paste("Variable", i, "was not found in the dataframe, skipped")) # Warn if variable is not found
     }
   }
-
 }
