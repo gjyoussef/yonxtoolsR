@@ -40,7 +40,7 @@ calculate_props <- function(df, variable, decimals=2) {
   )
 
 
-  df %>%
+  out <- df %>%
     dplyr::summarise(
       N_total = sum(!is.na(!!variable)),
       n_endorsed = sum(!!variable == 1, na.rm = TRUE),
@@ -57,4 +57,5 @@ calculate_props <- function(df, variable, decimals=2) {
            pct_hici = hici_p) %>%
     dplyr::select(!c(pct_loci, pct_hici))
 
+  return(out)
 }
